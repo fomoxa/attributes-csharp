@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- netstandard2.0 so the attributes can be referenced from anything: .NET
+         Framework, .NET 8, Unity, Godot. There is no code here that could need
+         a newer runtime. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+
+    <RootNamespace>Cyclone</RootNamespace>
+    <AssemblyName>Cyclone.Attributes</AssemblyName>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+
+    <!-- Only `src/` is the package. `tests/` has its own project. -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Cyclone.Attributes</PackageId>
+    <Authors>Cyclone Protocol</Authors>
+    <Version>0.1.0</Version>
+    <Description>The official Cyclone attributes for C#: [Network] and [Codec] markers that cyclonec reads. Wire types come from the Cyclone Specification, never from a C# type. No runtime, no encode, no decode.</Description>
+    <PackageTags>cyclone;attributes;codec;wire-format;annotation</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/cyclone-protocol/attributes-csharp</RepositoryUrl>
+    <PackageProjectUrl>https://cyclone-protocol.github.io</PackageProjectUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <!-- No dependencies, and nothing here could need one. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
