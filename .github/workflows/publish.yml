@@ -22,10 +22,10 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Test
-        run: dotnet test tests/Cyclone.Attributes.Tests -c Release
+        run: dotnet test tests/Fomoxa.Attributes.Tests -c Release
 
       - name: Pack
-        run: dotnet pack Cyclone.Attributes.csproj -c Release -o artifacts
+        run: dotnet pack Fomoxa.Attributes.csproj -c Release -o artifacts
 
       # Exchanges a short-lived GitHub OIDC token for a temporary nuget.org
       # API key (valid 1 hour). No long-lived secret is stored anywhere.

@@ -1,13 +1,13 @@
 using System;
 
-namespace Cyclone;
+namespace Fomoxa;
 
 /// <summary>
-/// Marks a Cyclone network model, and gives a field its Cyclone wire type.
+/// Marks a Fomoxa network model, and gives a field its Fomoxa wire type.
 /// </summary>
 /// <remarks>
 /// <para>
-/// On a type, <c>[Network]</c> says "this is a Cyclone network model". On a
+/// On a type, <c>[Network]</c> says "this is a Fomoxa network model". On a
 /// field or property, <c>[Network("u32")]</c> says "this field is a <c>u32</c>
 /// on the wire".
 /// </para>
@@ -29,8 +29,8 @@ namespace Cyclone;
 /// <para><b>The wire type is not the C# type.</b></para>
 ///
 /// <para>
-/// <see cref="WireType"/> holds a Cyclone wire type identifier, defined by the
-/// Cyclone Specification. The C# type of the member it sits on is a separate
+/// <see cref="WireType"/> holds a Fomoxa wire type identifier, defined by the
+/// Fomoxa Specification. The C# type of the member it sits on is a separate
 /// thing, and it does not decide a single byte:
 /// </para>
 /// <code>
@@ -48,7 +48,7 @@ namespace Cyclone;
 ///
 /// <para>
 /// <c>[Network(typeof(uint))]</c> would make the host language the source of
-/// truth, and it is not. Cyclone defines <c>u32</c> as four bytes Little Endian
+/// truth, and it is not. Fomoxa defines <c>u32</c> as four bytes Little Endian
 /// for every language; C# defines <c>uint</c> as whatever it likes. Deriving one
 /// from the other is how an implementation ends up unable to decode what another
 /// implementation wrote — which is the failure this attribute exists to prevent.
@@ -57,7 +57,7 @@ namespace Cyclone;
 /// <para>
 /// So the string is stored exactly as written and is never interpreted here.
 /// This assembly holds no list of valid wire types, no mapping from C# types,
-/// and no opinion about byte layout. <c>cyclonec</c> reads the string and
+/// and no opinion about byte layout. <c>fomoxac</c> reads the string and
 /// resolves it against the Specification.
 /// </para>
 /// </remarks>
@@ -71,7 +71,7 @@ namespace Cyclone;
 public sealed class NetworkAttribute : Attribute
 {
     /// <summary>
-    /// Marks a Cyclone network model.
+    /// Marks a Fomoxa network model.
     /// </summary>
     /// <remarks>
     /// Used on a type. <see cref="WireType"/> is <see langword="null"/>, because
@@ -82,10 +82,10 @@ public sealed class NetworkAttribute : Attribute
     }
 
     /// <summary>
-    /// Declares the Cyclone wire type of a field or property.
+    /// Declares the Fomoxa wire type of a field or property.
     /// </summary>
     /// <param name="wireType">
-    /// A Cyclone wire type identifier, spelled exactly as the Cyclone
+    /// A Fomoxa wire type identifier, spelled exactly as the Fomoxa
     /// Specification spells it — for example <c>"u32"</c>, <c>"f32"</c>,
     /// <c>"bool"</c>. It is stored verbatim and is not validated, mapped, or
     /// compared against the C# type of the member.
@@ -96,11 +96,11 @@ public sealed class NetworkAttribute : Attribute
     }
 
     /// <summary>
-    /// The Cyclone wire type, exactly as written, or <see langword="null"/> on a
+    /// The Fomoxa wire type, exactly as written, or <see langword="null"/> on a
     /// model.
     /// </summary>
     /// <remarks>
-    /// This is a Cyclone Specification identifier, not a C# type name. It is the
+    /// This is a Fomoxa Specification identifier, not a C# type name. It is the
     /// only thing that decides the byte layout of the field, and nothing in this
     /// assembly reads it.
     /// </remarks>

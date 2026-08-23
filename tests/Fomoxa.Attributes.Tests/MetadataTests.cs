@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Cyclone;
+using Fomoxa;
 using Xunit;
 
-namespace Cyclone.Attributes.Tests;
+namespace Fomoxa.Attributes.Tests;
 
 /// <summary>
-/// What the attributes record, read back the way <c>cyclonec</c> reads it.
+/// What the attributes record, read back the way <c>fomoxac</c> reads it.
 /// </summary>
 /// <remarks>
 /// Every test here is about metadata. There is nothing to encode with, and that
@@ -81,13 +81,13 @@ public sealed class MetadataTests
         // The C# type really is ulong…
         Assert.Equal(typeof(ulong), property.PropertyType);
 
-        // …and the Cyclone wire type really is u32, unchanged by it.
+        // …and the Fomoxa wire type really is u32, unchanged by it.
         Assert.Equal("u32", property.GetCustomAttribute<NetworkAttribute>()!.WireType);
     }
 
     /// <summary>
     /// Two different C# types, one wire type. If the native type were consulted,
-    /// these would disagree — and two implementations of Cyclone would stop
+    /// these would disagree — and two implementations of Fomoxa would stop
     /// being able to read each other.
     /// </summary>
     [Fact]
@@ -130,7 +130,7 @@ public sealed class MetadataTests
     /// <summary>
     /// The wire type is a string the package never interprets. A name it has
     /// never seen is stored and handed back unchanged — resolving it against the
-    /// Specification is <c>cyclonec</c>'s job.
+    /// Specification is <c>fomoxac</c>'s job.
     /// </summary>
     [Theory]
     [InlineData("u32")]
@@ -243,7 +243,7 @@ public sealed class MetadataTests
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
 
-        Assert.Equal(new[] { "Cyclone.CodecAttribute", "Cyclone.NetworkAttribute" }, exported);
+        Assert.Equal(new[] { "Fomoxa.CodecAttribute", "Fomoxa.NetworkAttribute" }, exported);
     }
 
     /// <summary>
@@ -264,7 +264,7 @@ public sealed class MetadataTests
 
         Assert.DoesNotContain(
             assembly.GetReferencedAssemblies(),
-            reference => reference.Name?.StartsWith("Cyclone", StringComparison.Ordinal) == true);
+            reference => reference.Name?.StartsWith("Fomoxa", StringComparison.Ordinal) == true);
     }
 
     [Fact]

@@ -1,6 +1,6 @@
-using Cyclone;
+using Fomoxa;
 
-namespace Cyclone.Attributes.Tests;
+namespace Fomoxa.Attributes.Tests;
 
 // The models the metadata tests read. They carry annotations and nothing else:
 // no base class, no interface, no method. What they are is entirely what the

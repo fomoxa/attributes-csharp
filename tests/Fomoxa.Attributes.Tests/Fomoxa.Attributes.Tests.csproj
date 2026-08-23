@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>false</ImplicitUsings>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Cyclone.Attributes.Tests</RootNamespace>
+    <RootNamespace>Fomoxa.Attributes.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../Cyclone.Attributes.csproj" />
+    <ProjectReference Include="../../Fomoxa.Attributes.csproj" />
   </ItemGroup>
 
 </Project>
