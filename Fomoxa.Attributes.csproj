@@ -9,8 +9,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>false</ImplicitUsings>
 
-    <RootNamespace>Cyclone</RootNamespace>
-    <AssemblyName>Cyclone.Attributes</AssemblyName>
+    <RootNamespace>Fomoxa</RootNamespace>
+    <AssemblyName>Fomoxa.Attributes</AssemblyName>
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,16 +21,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Cyclone.Attributes</PackageId>
-    <Authors>Cyclone Protocol</Authors>
+    <PackageId>Fomoxa.Attributes</PackageId>
+    <Authors>Fomoxa Protocol</Authors>
     <Version>0.1.0</Version>
-    <Description>The official Cyclone attributes for C#: [Network] and [Codec] markers that cyclonec reads. Wire types come from the Cyclone Specification, never from a C# type. No runtime, no encode, no decode.</Description>
-    <PackageTags>cyclone;attributes;codec;wire-format;annotation</PackageTags>
+    <Description>The official Fomoxa attributes for C#: [Network] and [Codec] markers that fomoxac reads. Wire types come from the Fomoxa Specification, never from a C# type. No runtime, no encode, no decode.</Description>
+    <PackageTags>fomoxa;attributes;codec;wire-format;annotation</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/cyclone-protocol/attributes-csharp</RepositoryUrl>
-    <PackageProjectUrl>https://cyclone-protocol.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/fomoxa/attributes-csharp</RepositoryUrl>
+    <PackageProjectUrl>https://fomoxa.github.io</PackageProjectUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Cyclone;
+namespace Fomoxa;
 
 /// <summary>
 /// Declares which codecs a model generates, and which of them a field belongs
@@ -9,7 +9,7 @@ namespace Cyclone;
 /// </summary>
 /// <remarks>
 /// <para>
-/// On a type, <c>[Codec("edge", "unity")]</c> says which codecs <c>cyclonec</c>
+/// On a type, <c>[Codec("edge", "unity")]</c> says which codecs <c>fomoxac</c>
 /// must generate. On a field or property, it says which of those the field
 /// appears in.
 /// </para>
@@ -38,7 +38,7 @@ namespace Cyclone;
 /// <c>edge</c>, <c>unity</c>, <c>orange_pi</c>, <c>database</c>,
 /// <c>custom_protocol</c> — this assembly has never heard of any of them, holds
 /// no list of them, and gives none of them meaning. They are names you invent,
-/// and <c>cyclonec</c> uses them to spell the type it generates.
+/// and <c>fomoxac</c> uses them to spell the type it generates.
 /// </para>
 ///
 /// <para>

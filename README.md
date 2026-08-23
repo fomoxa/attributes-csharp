@@ -1,21 +1,21 @@
-# cyclone-attributes (C#)
+# fomoxa-attributes (C#)
 
-The official **Cyclone attributes** for C#: `[Network]` and `[Codec]`.
+The official **Fomoxa attributes** for C#: `[Network]` and `[Codec]`.
 
 ```
-cyclone-attributes  →  your source  →  cyclonec  →  generated code
+fomoxa-attributes  →  your source  →  fomoxac  →  generated code
 ```
 
-Two attributes, in the `Cyclone` namespace, and nothing else. This package is the
-syntax half of Cyclone — the part that makes annotated C# carry the metadata
-`cyclonec` reads.
+Two attributes, in the `Fomoxa` namespace, and nothing else. This package is the
+syntax half of Fomoxa — the part that makes annotated C# carry the metadata
+`fomoxac` reads.
 
 ## The one rule
 
-> **Cyclone wire types are defined by the Cyclone Specification, not by the host
+> **Fomoxa wire types are defined by the Fomoxa Specification, not by the host
 > programming language.**
 >
-> **Native C# types do not determine the Cyclone byte representation.**
+> **Native C# types do not determine the Fomoxa byte representation.**
 
 ```csharp
 [Network("u32")]
@@ -24,7 +24,7 @@ public uint Id { get; set; }
 
 | | |
 |---|---|
-| `u32` | the **Cyclone wire type** — 4 bytes, Little Endian, per the Specification |
+| `u32` | the **Fomoxa wire type** — 4 bytes, Little Endian, per the Specification |
 | `uint` | the **C# representation** — how your program happens to store it |
 
 The wire format always comes from the Specification. Change the C# type and
@@ -42,7 +42,7 @@ question about the wire, and this package never asks it.
 ## Usage
 
 ```csharp
-using Cyclone;
+using Fomoxa;
 
 [Network]
 [Codec("edge", "unity")]
@@ -64,12 +64,12 @@ public class DeviceState
 
 | Where | Attribute | Says |
 |-------|-----------|------|
-| model | `[Network]` | this type is a Cyclone network model |
+| model | `[Network]` | this type is a Fomoxa network model |
 | model | `[Codec("edge", "unity")]` | generate these codecs for it |
-| field | `[Network("u32")]` | this field's Cyclone wire type |
+| field | `[Network("u32")]` | this field's Fomoxa wire type |
 | field | `[Codec("edge")]` | which of the model's codecs this field appears in |
 
-From the model above, `cyclonec` knows to generate:
+From the model above, `fomoxac` knows to generate:
 
 ```
 DeviceStateEdgeCodec    →  Id, Temperature
@@ -82,7 +82,7 @@ Fields and properties both work, and a model may be a `class` or a `struct`.
 
 `edge`, `unity`, `orange_pi`, `database`, `custom_protocol` — this package has
 never heard of any of them, holds no list of them, and gives none of them
-meaning. They are identifiers you invent; `cyclonec` uses them to spell the type
+meaning. They are identifiers you invent; `fomoxac` uses them to spell the type
 it generates. The repeated form and the list form are the same thing:
 
 ```csharp
@@ -100,12 +100,12 @@ Order is preserved.
 ```
 
 `typeof(uint)` would make the host language the source of truth, and it is not.
-Cyclone defines `u32` as four bytes Little Endian for *every* language; C#
+Fomoxa defines `u32` as four bytes Little Endian for *every* language; C#
 defines `uint` as whatever it likes. Deriving one from the other is how an
 implementation ends up unable to decode what another implementation wrote:
 
 ```
-Cyclone Specification          C# Type
+Fomoxa Specification          C# Type
         │ defines                 │ guess
         ▼                         ▼
    Wire Type                 Wire Type          ← wrong
@@ -121,7 +121,7 @@ Cyclone Specification          C# Type
 
 So the string is stored **exactly as written** and is never interpreted here.
 There is no list of valid wire types in this assembly, no mapping from C# types,
-and no opinion about byte layout. `cyclonec` reads the string and resolves it
+and no opinion about byte layout. `fomoxac` reads the string and resolves it
 against the Specification.
 
 ## What this package does not contain
@@ -147,15 +147,15 @@ examples in this package's brief use lowercase `"string"`.
 
 **This package does not resolve that.** It stores what you write, byte for byte,
 and hands it back unchanged. Which spelling is canonical is a question for the
-Specification and for `cyclonec`, and inventing an answer here — a validator, an
+Specification and for `fomoxac`, and inventing an answer here — a validator, an
 alias table, a normaliser — would be inventing a wire format. `TODO`: settle the
-spelling in the Specification, then `cyclonec` enforces it.
+spelling in the Specification, then `fomoxac` enforces it.
 
 ## Layout
 
 ```
-cyclone-attributes-csharp/
-├── Cyclone.Attributes.csproj
+fomoxa-attributes-csharp/
+├── Fomoxa.Attributes.csproj
 ├── src/
 │   ├── NetworkAttribute.cs
 │   └── CodecAttribute.cs
@@ -180,11 +180,11 @@ public ulong Value { get; set; }   // wire type is still "u32"
 ```
 
 Plus two tests that guard the scope: the assembly exports exactly
-`Cyclone.NetworkAttribute` and `Cyclone.CodecAttribute`, and every exported type
+`Fomoxa.NetworkAttribute` and `Fomoxa.CodecAttribute`, and every exported type
 is an attribute.
 
 ```
-dotnet test tests/Cyclone.Attributes.Tests
+dotnet test tests/Fomoxa.Attributes.Tests
 ```
 
 ## Build
